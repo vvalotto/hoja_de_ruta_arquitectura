@@ -1,5 +1,5 @@
 from unittest import TestCase
-from presupuesto.entidades.linea_prespuesto import *
+from entidades.linea_prespuesto import *
 
 
 class TestGastoMensual(TestCase):

@@ -2,18 +2,26 @@
 
 """
 
-Meses = ['Enero', 'Febrero']
+MESES = ['Enero', 'Febrero',
+         'Marzo', 'Abril',
+         'Mayo', 'Junio',
+         'julio', 'Agosto',
+         'Setiembre', 'Octubre',
+         'Noviembre', 'Diciembre']
 
 
 class GastoMensual:
-
+    """
+    Gasto Mensual prespuestado.
+    Contiene el mes y el valor prespuestado
+    """
     @property
     def mes(self):
         return self._mes
 
     @mes.setter
     def mes(self, valor):
-        if valor not in Meses:
+        if valor not in MESES:
             raise Exception("Error: Nombre de mes inexistente")
         self._mes = valor
 
@@ -36,11 +44,19 @@ class GastoMensual:
 
 
 class LineaPresupuesto:
+    """
+    Linea de gasto anual a prespuestar.
+    Corresponde a un servicio, licencia, contrado.
+    Se especifica por su denominacion que respresenta el gasto
+    """
+    @property
+    def denominacion(self):
+        return self._denominacion
 
     def __init__(self, denominacion):
         self._denominacion = denominacion
         self._linea = []
-        for mes in Meses:
+        for mes in MESES:
             mes_gasto = GastoMensual()
             mes_gasto.mes = mes
             self._linea.append(mes_gasto)
