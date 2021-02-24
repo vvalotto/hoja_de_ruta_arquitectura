@@ -21,4 +21,4 @@ class Presupuesto:
         pass
 
     def obtener_presupuesto_sector(self):
-        return
+        pass

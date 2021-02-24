@@ -1,5 +1,5 @@
 from unittest import TestCase
-from presupuesto.entidades.linea_prespuesto import *
+from entidades.linea_prespuesto import *
 
 
 class TestLineaPresupuesto(TestCase):
@@ -7,8 +7,7 @@ class TestLineaPresupuesto(TestCase):
     def setUp(self) -> None:
         self._linea_presupuesto = LineaPresupuesto("Licencias Sistema 1")
         self._linea_presupuesto.presupuestar_mes('Enero', 50)
-        for gasto_mensual in self._linea_presupuesto.obtener_gasto_meses():
-            print(gasto_mensual)
+        print(self._linea_presupuesto.denominacion)
 
     def test_obtener_presupuesto_mes(self):
         self._linea_presupuesto.presupuestar_mes('Enero', 100)
