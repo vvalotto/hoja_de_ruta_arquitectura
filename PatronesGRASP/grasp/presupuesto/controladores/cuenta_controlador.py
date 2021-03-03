@@ -6,6 +6,10 @@ from entidades.cuenta_presupuesto import *
 
 class CuentaPresupuestoControlador:
 
+    @property
+    def cuenta(self):
+        return self._cuenta
+
     def __init__(self):
         self._cuenta = None
 
