@@ -9,6 +9,10 @@ from .linea_prespuesto import *
 
 class CuentaPresupuesto:
 
+    @property
+    def id(self):
+        return self._identificacion
+
     def __init__(self, identificacion):
         self._identificacion = identificacion
         self._lineas_presupuesto = []
