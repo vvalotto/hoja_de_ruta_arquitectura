@@ -1,35 +1,42 @@
 from abc import ABCMeta, abstractmethod
 
 
+class Graznido:
+
+    @staticmethod
+    def graznar():
+        print('Cuac!!!')
+
+
+class Volador:
+
+    @staticmethod
+    def volar():
+        print('Estoy volando...')
+
+
 class Pato(metaclass=ABCMeta):
 
     def __init__(self):
         pass
 
     @staticmethod
-    def graznar():
-        print('Cuac!!!')
-
-    @staticmethod
     def nadar():
         print('Estoy nadando...')
 
-    @staticmethod
-    def volar():
-        print('Estoy volando...')
 
     @abstractmethod
     def mostrar(self):
         pass
 
 
-class PatoReal(Pato):
+class PatoReal(Pato, Graznido, Volador):
 
     def mostrar(self):
         print('Yo soy un pato real')
 
 
-class PatoModelado(Pato):
+class PatoModelado(Pato, Graznido, Volador):
 
     def mostrar(self):
         print('Yos un pato modelado')
@@ -43,17 +50,8 @@ class PatoDeGoma(Pato):
     def mostrar(self):
         print('Yos un pato de goma')
 
-    def volar(self):
-        raise Exception('No puedo volar')
-
 
 class PatoDeMadera(Pato):
 
-    def graznar(self):
-        raise Exception('No puedo graznar')
-
     def mostrar(self):
         print('Yos un pato de goma')
-
-    def volar(self):
-        raise Exception('No puedo volar')
