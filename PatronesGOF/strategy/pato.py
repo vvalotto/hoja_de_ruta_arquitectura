@@ -3,16 +3,16 @@ from abc import ABCMeta, abstractmethod
 
 class Graznido:
 
-    @staticmethod
-    def graznar():
-        print('Cuac!!!')
+    @abstractmethod
+    def graznar(self):
+        pass
 
 
 class Volador:
 
-    @staticmethod
-    def volar():
-        print('Estoy volando...')
+    @abstractmethod
+    def volar(self):
+        pass
 
 
 class Pato(metaclass=ABCMeta):
@@ -24,7 +24,6 @@ class Pato(metaclass=ABCMeta):
     def nadar():
         print('Estoy nadando...')
 
-
     @abstractmethod
     def mostrar(self):
         pass
@@ -32,17 +31,29 @@ class Pato(metaclass=ABCMeta):
 
 class PatoReal(Pato, Graznido, Volador):
 
+    def graznar(self):
+        print('Cuac!!!')
+
+    def volar(self):
+        print('Puedo Volar...')
+
     def mostrar(self):
         print('Yo soy un pato real')
 
 
 class PatoModelado(Pato, Graznido, Volador):
 
+    def graznar(self):
+        print('Cuac!!!')
+
+    def volar(self):
+        print('Puedo Volar...')
+
     def mostrar(self):
         print('Yos un pato modelado')
 
 
-class PatoDeGoma(Pato):
+class PatoDeGoma(Pato, Graznido):
 
     def graznar(self):
         print('Sssscuac!!!')
