@@ -1,68 +1,48 @@
-from abc import ABCMeta, abstractmethod
+from vuelo import *
+from graznido import *
 
-
-class Graznido:
-
-    @abstractmethod
-    def graznar(self):
-        pass
-
-
-class Volador:
-
-    @abstractmethod
-    def volar(self):
-        pass
+from abc import  ABCMeta, abstractmethod
 
 
 class Pato(metaclass=ABCMeta):
 
+    vuelo = None
+    graznido = None
+
     def __init__(self):
         pass
 
-    @staticmethod
-    def nadar():
-        print('Estoy nadando...')
-
     @abstractmethod
-    def mostrar(self):
+    def visualizar(self):
         pass
 
+    def hacer_graznido(self):
+        self.graznido.graznar()
 
-class PatoReal(Pato, Graznido, Volador):
+    def realizar_vuelo(self):
+        self.vuelo.volar()
 
-    def graznar(self):
-        print('Cuac!!!')
-
-    def volar(self):
-        print('Puedo Volar...')
-
-    def mostrar(self):
-        print('Yo soy un pato real')
+    def nadar(self):
+        print ('Todos los patos nadan')
 
 
-class PatoModelado(Pato, Graznido, Volador):
+class PatoReal(Pato):
 
-    def graznar(self):
-        print('Cuac!!!')
+    def __init__(self):
+        super().__init__()
+        self.vuelo = VueloConAlas()
+        self.graznido = GraznidoFuerte()
 
-    def volar(self):
-        print('Puedo Volar...')
+    def visualizar(self):
+        print('Yos un pato real')
 
-    def mostrar(self):
+
+class PatoModelado(Pato):
+
+    def __init__(self):
+        super().__init__()
+        self.vuelo = VueloConAlas()
+        self.graznido = GraznidoSilencioso()
+
+    def visualizar(self):
         print('Yos un pato modelado')
-
-
-class PatoDeGoma(Pato, Graznido):
-
-    def graznar(self):
-        print('Sssscuac!!!')
-
-    def mostrar(self):
-        print('Yos un pato de goma')
-
-
-class PatoDeMadera(Pato):
-
-    def mostrar(self):
-        print('Yos un pato de goma')
