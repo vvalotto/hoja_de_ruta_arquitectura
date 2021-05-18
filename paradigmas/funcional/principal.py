@@ -1,3 +1,6 @@
+"""
+Programa principal que llama a las funciones de la programación funbcional
+"""
 
 from funcional.analisis_texto import *
 

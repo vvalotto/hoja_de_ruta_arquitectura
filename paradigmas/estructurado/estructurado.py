@@ -1,5 +1,5 @@
 """
-Ejemplo para el paradigma de programación declarativo - Programación estructurada
+Ejemplo para el paradigma de programación imperativa - Programación estructurada
 """
 
 # Inicializacion de datos

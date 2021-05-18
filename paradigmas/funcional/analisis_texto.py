@@ -1,9 +1,13 @@
+"""
+Ejemplo para el paradigma de programación declarativa - Programación Funcional
+"""
+
+CARACTERES_DESCARTABLES = [',', '.', ':', ';', '-', '_']
 
 
 def filtrar_caracteres_alfabeticos(texto):
 
-    caracteres_descartables = [',', '.', ':', ';', '-', '_']
-    return ''.join([caracter for caracter in texto if caracter not in caracteres_descartables])
+    return ''.join(list(filter(lambda caracter: caracter not in CARACTERES_DESCARTABLES, texto)))
 
 
 def depurar_texto(texto):
@@ -23,7 +27,7 @@ def contar_palabras(texto):
 
 def obtener_palabras_iniciadas_con(texto, letra):
 
-    return [palabra for palabra in obtener_palabras(texto) if palabra[0] == letra]
+    return list(filter(lambda palabra: palabra[0] == letra, obtener_palabras(texto)))
 
 
 def contar_palabras_iniciadas_con(texto, letra):

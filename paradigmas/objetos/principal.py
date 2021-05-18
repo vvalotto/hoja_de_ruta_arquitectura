@@ -1,3 +1,7 @@
+"""
+Programa principal que la clase definida para analizar el texto. Programación Orientada a Objetos
+"""
+
 from objetos.analizador_texto import *
 
 mi_texto = 'No son las cosas que nos pasan las que nos hacen sufrir, sino lo que nosotros nos decimos sobre esas cosas'

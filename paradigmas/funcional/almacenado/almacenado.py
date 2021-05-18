@@ -29,4 +29,4 @@ def guardar(objeto, nombre_archivo, funcion_guardar):
 
 
 analisis_texto = {'texto': 'holasss'}
-guardar(analisis_texto, 'hola.txt', fabricar('j'))
+guardar(analisis_texto, 'hola.txt', fabricar('p'))

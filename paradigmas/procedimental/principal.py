@@ -1,3 +1,7 @@
+"""
+Programa principal que llama a las funciones de la programación módular
+"""
+
 from procedimental.analisis_texto import *
 
 texto = 'No son las cosas que nos pasan las que nos hacen sufrir, sino lo que nosotros nos decimos sobre esas cosas'
