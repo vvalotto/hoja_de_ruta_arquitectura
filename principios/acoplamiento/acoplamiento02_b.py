@@ -1,13 +1,14 @@
 import math
 
-class Salida(object):
+
+class Salida:
 
     direccion = ""
-    Indicador = ""
+    indicador = ""
     posicion = None
 
 
-class Comparador(object):
+class Comparador:
 
     def __init__(self, referencia):
         self._referencia = referencia
@@ -19,7 +20,8 @@ class Comparador(object):
             resultado = "Subir" if posicion < self._referencia else "Bajar"
         return resultado
 
-class Actuador(object):
+
+class Actuador:
 
     def __init__(self, tope1, tope2):
         self._tope1 = tope1
@@ -29,11 +31,15 @@ class Actuador(object):
         print(direccion)
 
     def alertar(self, posicion):
-        if math.fabs(posicion - self._tope1) > 2:
-            Indicador = "Apagado"
+
+        if self.esta_cerca_del_tope(posicion, self._tope1) or self.esta_cerca_del_tope(posicion, self._tope2):
+            indicador = "Apagado"
         else:
-            Indicador = "Prendido"
-        return Indicador
+            indicador = "Prendido"
+        return indicador
+
+    def esta_cerca_del_tope(self, posicion, tope):
+        return math.fabs(posicion - tope) < 3
 
 
 class Control(object):
@@ -43,8 +49,8 @@ class Control(object):
         self.mi_actuador = Actuador(15, 5)
 
     def mover(self, salida):
-        salida.Indicador = self.mi_actuador.alertar(salida.posicion)
-        print(salida.Indicador)
+        salida.indicador = self.mi_actuador.alertar(salida.posicion)
+        print(salida.indicador)
         self.mi_actuador.actuar(self.mi_comparador.comparar(salida.posicion))
 
 

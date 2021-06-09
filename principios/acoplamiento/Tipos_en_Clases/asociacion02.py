@@ -1,29 +1,27 @@
-class TipoY(object):
+class TipoA:
 
     def __init__(self):
-        self.accion = 'creando'
-        print('Tipo Y. Accion: {0}'.format(self.accion))
-        return
+        self._accion = 'creando'
+        print('Tipo A. Accion: {0}'.format(self._accion))
 
     def hacer(self):
-        self.accion = 'haciendo'
-        print('Tipo Y. Accion: {0}'.format(self.accion))
-        return
+        self._accion = 'haciendo'
+        print('Tipo A. Accion: {0}'.format(self._accion))
 
-class TipoX(object):
+
+class TipoB:
 
     def __init__(self):
-        self.accion = 'creando'
-        print('Tipo X. Accion: {0}'.format(self.accion))
-        return
+        self._accion = 'creando'
+        print('Tipo B. Accion: {0}'.format(self._accion))
 
-    def resolver(self, t):
+    def resolver(self):
+        t = TipoA()
         t.hacer()
-        self.accion = 'haciendo algo'
-        print('Tipo V. Accion: {0}'.format(self.accion))
-        return
+        self._accion = 'haciendo algo'
+        print('Tipo B. Accion: {0}'.format(self._accion))
+
 
 if __name__ == '__main__':
-    x = TipoX()
-    y = TipoY()
-    x.resolver(y)
+    b = TipoB()
+    b.resolver()

@@ -4,7 +4,7 @@ import math
 class Salida:
 
     direccion = ""
-    Indicador = ""
+    indicador = ""
     posicion = None
 
 
@@ -21,36 +21,41 @@ class Comparador:
         salida.direccion = resultado
         return salida
 
+
 class Actuador:
 
     def __init__(self, tope1, tope2):
         self._tope1 = tope1
         self._tope2 = tope2
 
-    def actuar(self, salida):
+    def accionar(self, salida):
         print(salida.direccion)
 
     def alertar(self, salida):
-        if math.fabs(salida.posicion - self._tope1) > 2:
-            salida.Indicador = "Apagado"
+
+        if self.esta_cerca_del_tope(salida, self._tope1) or self.esta_cerca_del_tope(salida, self._tope2):
+            salida.indicador = "Prendido"
         else:
-            salida.Indicador = "Prendido"
-        print(salida.Indicador)
+            salida.indicador = "Apagado"
+        print(salida.indicador)
+
+    def esta_cerca_del_tope(self, salida, tope):
+        return math.fabs(salida.posicion - tope) < 3
 
 
 class Control:
 
     def __init__(self):
-        self.mi_comparador = Comparador(10)
-        self.mi_actuador = Actuador(15, 5)
+        self._comparador = Comparador(10)
+        self._actuador = Actuador(15, 5)
 
     def mover(self, salida):
-        self.mi_actuador.alertar(salida)
-        self.mi_actuador.actuar(self.mi_comparador.comparar(salida))
+        self._actuador.alertar(salida)
+        self._actuador.accionar(self._comparador.comparar(salida))
 
 
 if __name__ == "__main__":
     mi_salida = Salida()
-    mi_salida.posicion = 14
+    mi_salida.posicion = 6
     mi_control = Control()
     mi_control.mover(mi_salida)

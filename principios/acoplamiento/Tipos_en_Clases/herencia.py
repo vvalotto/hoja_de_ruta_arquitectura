@@ -1,34 +1,25 @@
 
-class TipoY:
+class TipoM:
 
     def __init__(self):
-        self.accion = 'creando'
-        print('Tipo {0} > Accion: {1}'.format(self.__class__.__name__, self.accion))
-        return
+        self._accion = 'creando M'
+        print('Tipo {0} > Accion: {1}'.format(self.__class__.__name__, self._accion))
 
     def hacer(self):
-        self.accion = 'haciendo'
-        print('Tipo {0} > Accion: {1}'.format(self.__class__.__name__, self.accion))
-        return
+        self._accion = 'haciendo M'
+        print('Tipo {0} > Accion: {1}'.format(self.__class__.__name__, self._accion))
 
 
-class TipoX(TipoY):
-
-    def __init__(self):
-        super().__init__()
-        self.accion = 'creando'
-        print('Tipo {0} > Accion: {1}'.format(self.__class__.__name__, self.accion))
-        return
+class TipoN(TipoM):
 
     def resolver(self):
-        self.accion = 'haciendo algo'
-        print('Tipo {0} > Accion: {1}'.format(self.__class__.__name__, self.accion))
-        return
+        self._accion = 'haciendo algo N'
+        print('Tipo {0} > Accion: {1}'.format(self.__class__.__name__, self._accion))
 
 
 if __name__ == '__main__':
-    y = TipoY()
-    y.hacer()
-    x = TipoX()
-    x.hacer()
-    x.resolver()
+    m = TipoM()
+    m.hacer()
+    n = TipoN()
+    n.hacer()
+    n.resolver()

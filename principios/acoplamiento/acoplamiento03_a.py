@@ -1,25 +1,23 @@
 import math
 
-class Salida(object):
+
+class Salida:
 
     direccion = ""
     posicion = None
 
-class Indicador(object):
+
+class Indicador:
     def __init__(self, inicio):
         self._ON = inicio
         self._estado = 'Sin Estado'
 
     def setear(self, valor):
         if self._ON == 'ON':
-            if valor == 1:
-                self._estado =  "Apagado"
-            else:
-                self._estado =  "Prendido"
-        return self._estado
+            self._estado = valor
 
 
-class Comparador(object):
+class Comparador:
 
     def __init__(self, referencia):
         self._referencia = referencia
@@ -31,25 +29,27 @@ class Comparador(object):
             resultado = "Subir" if posicion < self._referencia else "Bajar"
         return resultado
 
-class Actuador(object):
+
+class Actuador:
 
     def __init__(self, tope1, tope2):
         self._tope1 = tope1
         self._tope2 = tope2
-        self.mi_indicador = Indicador('ON')
+        self._indicador = Indicador('ON')
 
-    def actuar(self, direccion):
+    def accionar(self, direccion):
         print(direccion)
 
     def alertar(self, posicion):
-        if math.fabs(posicion - self._tope1) > 2:
-            Indicador = 1
+        if self.esta_cerca_del_tope(posicion, self._tope1) or self.esta_cerca_del_tope(posicion, self._tope2):
+            self._indicador.setear("Apagado")
         else:
-            Indicador = 2
-        return self.mi_indicador.setear(Indicador)
+            self._indicador.setear("Prendido")
 
+    def esta_cerca_del_tope(self, posicion, tope):
+        return math.fabs(posicion - tope) < 3
 
-class Control(object):
+class Control:
 
     def __init__(self):
         self.mi_comparador = Comparador(10)
@@ -58,7 +58,7 @@ class Control(object):
     def mover(self, salida):
         salida.Indicador = self.mi_actuador.alertar(salida.posicion)
         print(salida.Indicador)
-        self.mi_actuador.actuar(self.mi_comparador.comparar(salida.posicion))
+        self.mi_actuador.accionar(self.mi_comparador.comparar(salida.posicion))
 
 
 if __name__ == "__main__":

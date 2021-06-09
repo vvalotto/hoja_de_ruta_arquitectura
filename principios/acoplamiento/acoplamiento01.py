@@ -14,18 +14,18 @@ class Comparador:
 
 class Actuador:
 
-    def actuar(self, accion):
+    def accionar(self, accion):
         print(accion)
 
 
 class Control:
 
     def __init__(self):
-        self.mi_comparador = Comparador(10)
-        self.mi_actuador = Actuador()
+        self._comparador = Comparador(10)
+        self._actuador = Actuador()
 
-    def mover(self, pos_actual):
-        self.mi_actuador.actuar(self.mi_comparador.comparar(pos_actual))
+    def mover(self, posicion_deseada):
+        self._actuador.accionar(self._comparador.comparar(posicion_deseada))
 
 
 if __name__ == "__main__":

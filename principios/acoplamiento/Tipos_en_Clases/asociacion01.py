@@ -1,9 +1,11 @@
 class TipoX:
     mi_atributo = 'miembro de X'
 
-    @staticmethod
-    def mostrar_atributos(tipo):
-        print(TipoX.mi_atributo)
+    def __init__(self):
+        print('Tipo X Creado')
+
+    def mostrar_atributos(self, tipo):
+        print(self.mi_atributo)
         tipo.hacer()
 
 
