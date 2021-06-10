@@ -8,6 +8,11 @@ class Salida:
 
 
 class Indicador:
+
+    @property
+    def estado(self):
+        return self._estado
+
     def __init__(self, inicio):
         self._ON = inicio
         self._estado = 'Sin Estado'
@@ -45,9 +50,11 @@ class Actuador:
             self._indicador.setear("Apagado")
         else:
             self._indicador.setear("Prendido")
+        return self._indicador.estado
 
     def esta_cerca_del_tope(self, posicion, tope):
         return math.fabs(posicion - tope) < 3
+
 
 class Control:
 
@@ -56,8 +63,7 @@ class Control:
         self.mi_actuador = Actuador(15, 5)
 
     def mover(self, salida):
-        salida.Indicador = self.mi_actuador.alertar(salida.posicion)
-        print(salida.Indicador)
+        print(self.mi_actuador.alertar(salida.posicion))
         self.mi_actuador.accionar(self.mi_comparador.comparar(salida.posicion))
 
 
