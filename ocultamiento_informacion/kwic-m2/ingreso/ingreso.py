@@ -6,6 +6,7 @@ from palabras.palabras import *
 
 
 def leer_linea_texto(nombre_archivo):
+
     lineas = Lineas()
     try:
         archivo = open(nombre_archivo, 'r')

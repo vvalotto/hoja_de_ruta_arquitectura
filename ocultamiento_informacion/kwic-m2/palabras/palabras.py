@@ -5,7 +5,7 @@ Modulo que arma las lineas del texto en una estructura para ser manipulada poste
 
 class Palabras:
     """
-    Conjunto de palabras, pueder ser una oración, un renglon, una linea
+    Lista de palabras, pueder ser una oración, un renglon, una linea
     """
     def __init__(self):
         """
@@ -28,7 +28,7 @@ class Palabras:
 
 class Lineas:
     """
-    Conjunto de lineas de un texto, pueden ser conjunto de renglones o de oraciones
+    Lista de lineas de un texto, pueden ser conjunto de renglones o de oraciones
     """
     def __init__(self):
         """
@@ -45,16 +45,11 @@ class Lineas:
     def obtener_linea(self, numero_de_linea):
         """
         Recupera la linea numerada
-        :param numero_de_linea:
-        :return:
         """
         return self._lista_del_lineas[numero_de_linea]
 
     def obtener_palabra(self, numero_de_linea, posicion_de_palabra):
         """
         Recupera la palabra de la posicion en la linea
-        :param numero_de_linea:
-        :param posicion_de_palabra:
-        :return:
         """
         return self._lista_del_lineas[numero_de_linea].obtener_palabra[posicion_de_palabra]

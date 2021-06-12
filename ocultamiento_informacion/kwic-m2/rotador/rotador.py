@@ -1,22 +1,19 @@
 """
-
+Modulo que arma una lista cadenas circulares de palabras, una por cada linea de texto leida.
+Cada una de las cadenas solo contiene la palabras con significado (Palabras claves)
 """
 
 
 class Rotador:
 
-    PALABRAS_EXCLUIDAS = ['LA', 'LAS', 'EL', 'LOS', 'DE', 'DEL', 'A', 'O', 'PARA', 'POR', 'QUE', 'SE', 'SI', 'Y']
-
     def __init__(self, lineas):
         """
-        Constructor del rotados.
+        Constructor del rotador.
         Se instancia con la lineas que deben ser transformadas en
         cadenas de palabras circulares
-        :param lineas: conjunto de lineas de texto
         """
         self._lineas = lineas
         self._lineas_circulares = []  # Lista de cadenas circulares
-        self._palabras_indices = []
 
     def obtener_linea(self, numero_de_linea):
         return self._lineas.obtener_linea(numero_de_linea)
@@ -52,9 +49,6 @@ class Rotador:
         Devuelve la cadena de caracteres compuesta de la cadena de palabras
         que esta en el renglon (numero de linea) y empieza por la palabra apuntada
         por puntero
-        :param numero_linea:
-        :param puntero:
-        :return:
         """
         linea_circular = ""
         linea_circular_original = self._lineas_circulares[numero_linea]
@@ -65,18 +59,6 @@ class Rotador:
             linea_circular = linea_circular + palabra + " "
         return linea_circular
 
-    def generar_indices_de_palabras(self):
-
-        for linea in self._lineas.obtener_lineas():
-            indices_por_linea = []
-            for palabra in linea.obtener_cadena_de_palabras():
-                if palabra not in self.PALABRAS_EXCLUIDAS:
-                    indices_por_linea.append(linea.obtener_cadena_de_palabras().index(palabra))
-            self._palabras_indices.append(indices_por_linea)
-
-    def obtener_indices_de_palabras(self):
-        return self._palabras_indices
-
 
 class Celda:
     """
@@ -85,8 +67,6 @@ class Celda:
     def __init__(self, contenido, proxima_celda):
         """
         Crea elemento
-        :param contenido: 
-        :param proxima_celda: 
         """
         self._contenido = contenido
         self._proxima_celda = proxima_celda
@@ -116,29 +96,23 @@ class CadenaCircular:
     def agregar_celda(self, celda):
         """
         Se agrega una celda a la cadena al final de la lista
-        :param celda:
-        :return:
         """
         self._cadena.append(celda)
 
     def obtener_celda(self, posicion):
         """
         Recupera una celda de acuerdo a la posición en la lista
-        :param posicion: posición de la celda en la lista
-        :return:
         """
         return self._cadena[posicion]
 
     def obtener_cadena(self):
         """
         Devuelva la lista circular de celdas
-        :return:
         """
         return self._cadena
 
     def obtener_tamanio(self):
         """
         Devuelve la cantidad de elementos de la lista
-        :return:
         """
         return len(self._cadena)

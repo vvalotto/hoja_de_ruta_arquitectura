@@ -1,14 +1,11 @@
 """
-
+Módulo que arma las frases en contexto para cada palabra clave y muestra el resultado
 """
 
 
 def armar_frase_con_contexto(palabra_en_contexto, linea):
     """
-
-    :param palabra_en_contexto:
-    :param linea:
-    :return:
+    ToDo: Falta Descripción
     """
     frase = []
     contexto = linea[palabra_en_contexto[2]]
@@ -21,10 +18,7 @@ def armar_frase_con_contexto(palabra_en_contexto, linea):
 
 def armar_indices_en_contexto(cadena_de_palabras, lista_ordenada):
     """
-
-    :param cadena_de_palabras:
-    :param lista_ordenada:
-    :return:
+    ToDo: Falta Descripción
     """
     palabras_clave_en_contexto = []
     for elemento in lista_ordenada:
@@ -36,10 +30,7 @@ def armar_indices_en_contexto(cadena_de_palabras, lista_ordenada):
 
 def mostrar_kwic(cadena_de_palabras, lista_ordenada):
     """
-
-    :param cadena_de_palabras:
-    :param lista_ordenada:
-    :return:
+    ToDo: Falta Descripción
     """
     palabras_clave_en_contexto = armar_indices_en_contexto(cadena_de_palabras, lista_ordenada)
     for linea in palabras_clave_en_contexto:

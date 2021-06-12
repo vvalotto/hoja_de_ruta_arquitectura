@@ -1,5 +1,5 @@
 """
-
+Módulo que genera todas las frase en contexto ordenado alfabeticamente por palabra clave que inicia cada frase
 """
 
 
@@ -8,12 +8,13 @@ class Alfabetizador:
     Ordena alfabeticamente la lista de palabras clave, con su renglon y
     posicion en la frase
     """
-    def __init__(self, rotador):
+    def __init__(self, rotador, indexador):
         self._rotador = rotador
+        self._indexador = indexador
         self._palabras_clave_ordenadas = []
 
     def armar_lista_palabras_clave(self):
-        lista_indices = self._rotador.obtener_indices_de_palabras()
+        lista_indices = self._indexador.obtener_indices_de_palabras()
         for numero_linea in range(0, len(lista_indices)):
             linea = self._rotador.obtener_linea(numero_linea)
             indices = lista_indices[numero_linea]
@@ -37,7 +38,6 @@ class Alfabetizador:
     def armar_frases_contexto(self):
         """
         Para cada palabra clave obtener la frase en contexto
-        :return:
         """
         frases_en_contexto = []
         for palabra_clave in self._palabras_clave_ordenadas:
