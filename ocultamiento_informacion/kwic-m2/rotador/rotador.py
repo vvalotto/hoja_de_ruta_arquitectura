@@ -28,7 +28,7 @@ class Rotador:
             Para cada linea genera una cadena circular
             """
             cadena = CadenaCircular()
-            # Inicializa posicion de las palabras de la lista a trata
+            # Inicializa posicion de las palabras de la lista a tratar
             posicion = 1
             for palabra in linea.obtener_cadena_de_palabras():
                 """
@@ -52,11 +52,13 @@ class Rotador:
         """
         linea_circular = ""
         linea_circular_original = self._lineas_circulares[numero_linea]
-        for iterador in range(0, linea_circular_original.obtener_tamanio()):
+        paso = 0
+        while paso < linea_circular_original.obtener_tamanio():
             celda = linea_circular_original.obtener_celda(puntero)
             palabra = celda.obtener_contenido()
             puntero = celda.obtener_proxima_celda()
             linea_circular = linea_circular + palabra + " "
+            paso += 1
         return linea_circular
 
 

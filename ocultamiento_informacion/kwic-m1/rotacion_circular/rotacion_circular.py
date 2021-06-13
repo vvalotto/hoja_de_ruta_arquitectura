@@ -4,6 +4,25 @@ Módulo que genera las lista de palabras circulares e indices a las palabras cla
 PALABRAS_EXCLUIDAS = ['LA', 'LAS', 'EL', 'LOS', 'DE', 'DEL']
 
 
+def armar_texto_circular(lineas):
+    """
+    Genera una estructura de dependencia circular para cada linea de texto
+    """
+    lista_lineas = []
+    for linea in lineas:
+        posicion_proxima_palabra = 1
+        palabras_en_la_linea = []
+
+        for palabra in linea.split():
+            palabras_en_la_linea.append([palabra, posicion_proxima_palabra])
+            posicion_proxima_palabra += 1
+
+            if posicion_proxima_palabra == len(linea.split()):
+                posicion_proxima_palabra = 0
+        lista_lineas.append(palabras_en_la_linea)
+    return lista_lineas
+
+
 def generar_indices_de_palabras(linea):
     """
     Se genera un lista de las posiciones de las palabras en la linea de texto, pero las lista de las posiciones
@@ -14,20 +33,6 @@ def generar_indices_de_palabras(linea):
         if palabra[0] not in PALABRAS_EXCLUIDAS:
             indices.append(linea.index(palabra))
     return indices
-
-
-def armar_lineas_circulares(linea, indices):
-    """
-    ToDo: Descripción de la función
-    """
-    linea_circular = []
-    for indice in indices:
-        puntero = indice
-        for contador_palabra in range(0, len(linea)):
-            linea_circular.append(linea[puntero][0])
-            puntero = linea[puntero][1]
-
-    return linea_circular
 
 
 def generar_indices_por_linea(cadena_de_palabras):

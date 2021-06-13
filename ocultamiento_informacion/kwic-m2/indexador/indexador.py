@@ -1,16 +1,19 @@
 """
-
+Módulo de extrae los indices (posiciones) de las palabras clave de cada linea de texto
 """
 
 
 class Indexador:
-
-    PALABRAS_EXCLUIDAS = ['LA', 'LAS', 'EL', 'LOS', 'DE', 'DEL', 'A', 'O', 'PARA', 'POR', 'QUE', 'SE', 'SI', 'Y', 'SU']
+    """
+    Crea y trata los indices de la palabras clave de una linea de texto
+    """
+    PALABRAS_EXCLUIDAS = ['LA', 'LAS', 'EL', 'LOS', 'DE', 'DEL', 'A', 'O',
+                          'PARA', 'POR', 'QUE', 'SE', 'SI', 'Y', 'SU'
+                          ]
 
     def __init__(self, lineas):
         self._lineas = lineas
         self._palabras_indices = []
-        pass
 
     def generar_indices_de_palabras(self):
 
