@@ -99,13 +99,19 @@ class CadenaCircular:
         """
         Se agrega una celda a la cadena al final de la lista
         """
-        self._cadena.append(celda)
+        if celda is not None:
+            self._cadena.append(celda)
+        else:
+            raise Exception("Error, celda vacia")
 
     def obtener_celda(self, posicion):
         """
         Recupera una celda de acuerdo a la posición en la lista
         """
-        return self._cadena[posicion]
+        if self._existe_posicion_celda(posicion):
+            return self._cadena[posicion]
+        else:
+            raise Exception("Error, no existe la posiciona de la celda")
 
     def obtener_cadena(self):
         """
@@ -118,3 +124,6 @@ class CadenaCircular:
         Devuelve la cantidad de elementos de la lista
         """
         return len(self._cadena)
+
+    def _existe_posicion_celda(self, posicion):
+        return True if posicion <= self.obtener_tamanio() else False
