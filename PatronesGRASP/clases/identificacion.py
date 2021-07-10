@@ -1,3 +1,16 @@
+"""
+Ejemplos básicos
+"""
+
+"""
+class Identificacion:
+
+    tipo = None
+    numero = None
+
+    def __str__(self):
+        return str(self.tipo) + ":" + str(self.numero)
+"""
 
 
 class Identificacion:
@@ -18,11 +31,3 @@ class Identificacion:
         return self.__tipo + ":" + str(self.__numero)
 
 
-if __name__ == "__main__":
-    mi_id = Identificacion("DNI", 14367839)
-    print(mi_id)
-    print(mi_id.tipo)
-    print(mi_id.numero)
-
-    mi_id2 = Identificacion("Pasaparte", "AADD6890")
-    print(mi_id2)
