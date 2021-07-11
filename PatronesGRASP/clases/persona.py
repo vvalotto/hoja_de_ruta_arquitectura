@@ -17,7 +17,7 @@ class Persona:
 
     @property
     def apellido(self):
-        return self.__nombre.apellido
+        return self.__nombre.apellidos
 
     @property
     def fecha_de_nacimiento(self):
