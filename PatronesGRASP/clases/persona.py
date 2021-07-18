@@ -1,6 +1,3 @@
-from PatronesGRASP.clases.nombre import Nombre
-from PatronesGRASP.clases.identificacion import Identificacion
-
 
 """
 Clase Persona
@@ -30,7 +27,6 @@ class Persona:
     @property
     def documento(self):
         return self.__documento
-
 
     @property
     def apellidos_y_nombres(self):
