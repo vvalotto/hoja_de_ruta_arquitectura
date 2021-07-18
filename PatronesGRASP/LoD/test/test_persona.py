@@ -1,5 +1,4 @@
 import unittest
-from PatronesGRASP.clases.persona import *
 from datetime import date
 
 

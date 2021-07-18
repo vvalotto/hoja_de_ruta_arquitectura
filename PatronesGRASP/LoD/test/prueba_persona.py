@@ -1,5 +1,4 @@
-from PatronesGRASP.clases.persona import *
-from datetime import date, datetime
+from datetime import date
 
 mi_nombre = Nombre('Victor Octavio', 'Valotto')
 mi_documento = Identificacion('DNI', 14367839)

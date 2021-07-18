@@ -1,6 +1,4 @@
-from PatronesGRASP.clases.paciente import *
-from datetime import date, datetime
-
+from datetime import date
 
 nombre_paciente = Nombre('Alejo Antonio', 'Valotto')
 documento_paciente = Identificacion('DNI', 49330400)
