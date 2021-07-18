@@ -1,6 +1,6 @@
 from unittest import TestCase
-from LoD.entidades.turno import ListaDeTurnos
-from test.ejemplo_turno import fabricar_turno, fabricar_turno_2, fabricar_turno_3
+from PatronesGRASP.LoD.LoD.entidades.lista_turnos import ListaDeTurnos
+from PatronesGRASP.LoD.test.ejemplo_turno import fabricar_turno, fabricar_turno_2, fabricar_turno_3
 
 
 class TestListaDeTurnos(TestCase):
@@ -24,7 +24,7 @@ class TestListaDeTurnos(TestCase):
         self._turno = fabricar_turno()
         self._lista_de_turnos.agregar_turno(self._turno)
         self._lista_de_turnos.eliminar_turno(self._turno)
-        self.assertEqual(len(self._lista_de_turnos.lista), 1)
+        self.assertEqual(len(self._lista_de_turnos.lista), 0)
 
     def test_agregar_nuevo_turno(self):
         self._turno = fabricar_turno()

@@ -3,6 +3,8 @@ Instancia de Paciente para uso en caso de prueba
 """
 
 from PatronesGRASP.clases.paciente import *
+from PatronesGRASP.clases.nombre import *
+from PatronesGRASP.clases.identificacion import *
 import datetime
 
 

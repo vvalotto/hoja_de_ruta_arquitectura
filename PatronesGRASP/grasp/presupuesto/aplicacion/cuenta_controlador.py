@@ -1,7 +1,7 @@
 """
 
 """
-from entidades.cuenta_presupuesto import *
+from PatronesGRASP.grasp.presupuesto.entidades.cuenta_presupuesto import *
 
 
 class CuentaPresupuestoControlador:
@@ -13,8 +13,8 @@ class CuentaPresupuestoControlador:
     def __init__(self):
         self._cuenta = None
 
-    def crear_cuenta(self, identificacion_cuenta):
-        self._cuenta = CuentaPresupuesto(identificacion_cuenta)
+    def crear_cuenta(self, identificacion_cuenta, descripcion):
+        self._cuenta = CuentaPresupuesto(identificacion_cuenta, descripcion)
 
     def agregar_linea(self, denominacion_linea):
         self._cuenta.crear_linea(denominacion_linea)

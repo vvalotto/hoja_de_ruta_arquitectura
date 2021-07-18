@@ -7,18 +7,24 @@ from .cuenta_presupuesto import *
 
 class Presupuesto:
 
-    def __init__(self, sector):
-        self._sector = sector
-        self._cuentas = []
+    def __init__(self, gerencia):
+        self.__sector = gerencia
+        self.__estado = "Creado"
+        self.__anio = 2021
+        self.__cuentas = []
 
-    def crear_cuenta(self, descripcion_cuenta):
-        self._cuentas.append(LineaPresupuesto(descripcion_cuenta))
+    def agregar_cuenta(self, cuenta):
+        self.__cuentas.append(cuenta)
 
-    def obtener_cuenta(self, descripcion_cuenta):
-        return
+    def obtener_cuenta(self, identificacion):
+        for cuenta in self.__cuentas:
+            if cuenta.id == identificacion:
+                return cuenta
+            else:
+                return None
 
-    def eliminar_cuenta(self, descripcion_cuenta):
+    def eliminar_cuenta(self, identificacion):
         pass
 
-    def obtener_presupuesto_sector(self):
+    def obtener_presupuesto(self):
         pass

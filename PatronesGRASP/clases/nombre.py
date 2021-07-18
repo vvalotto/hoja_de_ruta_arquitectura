@@ -11,16 +11,14 @@ class Nombre:
     def apellidos(self):
         return self.__apellidos
 
-    def __init__(self, nombres='Sin Nombre', apellidos ='Sin Apellido'):
+    def __init__(self, nombres='Sin Nombre', apellidos='Sin Apellido'):
         """
         Creación del objeto valor nombre
-        :param nombres:
-        :param apellido:
         """
         if nombres is None:
-            raise Exception("No hay Mombre")
+            raise Exception("No hay Nombre")
         if apellidos is None:
-            raise Exception("no hay apellidos")
+            raise Exception("no hay Apellidos")
 
         self.__nombres = nombres
         self.__apellidos = apellidos
@@ -42,5 +40,3 @@ class Nombre:
 
     def __str__(self):
         return self.__nombres + ' ' + self.__apellidos
-
-
