@@ -1,10 +1,9 @@
 """
 Clase que corresponde a una cuenta contable del presupuesto.
 Esta cuenta posee una o mas lineas a presupuestar.
-No es posible definir una cuenta sin linea presupuestaria.
 """
 
-from .linea_prespuesto import *
+from PatronesGRASP.presupuesto.entidades.linea_presupuesto import *
 
 
 class CuentaPresupuesto:

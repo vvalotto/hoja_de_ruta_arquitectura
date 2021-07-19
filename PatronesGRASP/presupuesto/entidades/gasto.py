@@ -28,7 +28,7 @@ class GastoOtraMoneda(Gasto):
         return self._cantidad * self._tipo_de_cambio
 
     @property
-    def gasto_moneda_origen(self):
+    def cantidad_moneda_origen(self):
         return self._cantidad
 
     @property
