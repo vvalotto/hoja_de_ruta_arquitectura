@@ -1,5 +1,7 @@
 from unittest import TestCase
-from PatronesGRASP.grasp.presupuesto.entidades.linea_prespuesto import *
+from PatronesGRASP.presupuesto.entidades.gasto import Gasto, GastoOtraMoneda
+from PatronesGRASP.presupuesto.entidades.meses import Meses
+from PatronesGRASP.presupuesto.entidades.linea_presupuesto import LineaPresupuesto
 
 
 class TestLineaPresupuesto(TestCase):

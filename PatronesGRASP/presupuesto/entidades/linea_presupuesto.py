@@ -1,17 +1,13 @@
 """
-
+Linea de gasto anual a prespuestar.
+Corresponde a un servicio, licencia, contrado.
+Se especifica por su denominacion que respresenta el gasto
 """
-from abc import abstractmethod
-from .meses import Meses
+
 from .gasto_mensual import *
 
 
 class LineaPresupuesto:
-    """
-    Linea de gasto anual a prespuestar.
-    Corresponde a un servicio, licencia, contrado.
-    Se especifica por su denominacion que respresenta el gasto
-    """
 
     @property
     def denominacion(self):
@@ -43,4 +39,3 @@ class LineaPresupuesto:
 
     def obtener_gasto_meses(self):
         return self.__gasto_anual
-
