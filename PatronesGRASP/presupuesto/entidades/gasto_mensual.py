@@ -1,6 +1,6 @@
 
 from .meses import Meses
-from .gasto import Gasto
+from .gasto import Gasto, GastoOtraMoneda
 
 
 class GastoMensual:
