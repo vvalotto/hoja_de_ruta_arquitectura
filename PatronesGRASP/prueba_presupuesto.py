@@ -60,3 +60,11 @@ for linea in mi_cuenta.obtener_lineas_presupuesto():
 
 print(mi_cuenta.descripcion + ": " + str(mi_cuenta.obtener_presupuesto_cuenta()))
 print(cuenta_controlador.obtener_prespuesto())
+
+# Almacenar la cuenta presupuestada
+cuenta_controlador.persistir_cuenta()
+
+# Recuperar la cuenta en otro controlador
+otra_cuenta_controlador = CuentaPresupuestoControlador()
+otra_cuenta_controlador.recuperar_cuenta('1000')
+print("Otro controdor:" + str(otra_cuenta_controlador.obtener_prespuesto()))
