@@ -1,5 +1,6 @@
 from PatronesGRASP.presupuesto.aplicacion.cuenta_controlador import *
-
+from PatronesGRASP.presupuesto.aplicacion.validador import *
+from PatronesGRASP.presupuesto.entidades.cuenta_gasto_asignado import *
 
 """
 Se crean los gastos objetivos o asignados para cada cuenta
@@ -68,3 +69,16 @@ cuenta_controlador.persistir_cuenta()
 otra_cuenta_controlador = CuentaPresupuestoControlador()
 otra_cuenta_controlador.recuperar_cuenta('1000')
 print("Otro controdor:" + str(otra_cuenta_controlador.obtener_prespuesto()))
+
+
+# Validador
+gasto_asignado_2021 = GastoGerenciaAsignado()
+
+cuenta_1000 = CuentaGastoAsignado('1000', 50000)
+cuenta_1001 = CuentaGastoAsignado('1001', 300000)
+
+gasto_asignado_2021.agregar_cuenta(cuenta_1001)
+gasto_asignado_2021.agregar_cuenta(cuenta_1000)
+
+validador_presupuesto = ValidadorGastoPresupuesto(mi_presupuesto, gasto_asignado_2021)
+validador_presupuesto.validar()
