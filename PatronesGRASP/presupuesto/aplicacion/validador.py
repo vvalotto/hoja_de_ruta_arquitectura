@@ -5,9 +5,10 @@ Validar de gastos presupuestados
 
 class ValidadorGastoPresupuesto:
 
-    def __init__(self, presupuesto, gasto_asignado):
+    def __init__(self, presupuesto, gasto_asignado, notificador):
         self.__presupuesto = presupuesto
         self.__gasto_asignado = gasto_asignado
+        self.__notificador = notificador
 
     def validar(self):
         for cuenta_gasto_asignado in self.__gasto_asignado.obtener_cuentas():
@@ -19,4 +20,4 @@ class ValidadorGastoPresupuesto:
                     self.__notificar("Cuenta: " + cuenta_presupuestada.id + ", Fuera de presupuesto asigando")
 
     def __notificar(self, mensaje):
-        print(mensaje)
+        self.__notificador.notificar(mensaje)
