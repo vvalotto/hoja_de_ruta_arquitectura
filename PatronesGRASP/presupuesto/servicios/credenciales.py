@@ -1,0 +1,2 @@
+usuario = 'vvalottotst'
+password = ''
