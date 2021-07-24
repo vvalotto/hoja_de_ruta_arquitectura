@@ -81,6 +81,6 @@ cuenta_1001 = CuentaGastoAsignado('1001', 300000)
 gasto_asignado_2021.agregar_cuenta(cuenta_1001)
 gasto_asignado_2021.agregar_cuenta(cuenta_1000)
 
-notificador = Notificador()
+notificador = NotificadorArchivo()
 validador_presupuesto = ValidadorGastoPresupuesto(mi_presupuesto, gasto_asignado_2021, notificador)
 validador_presupuesto.validar()
