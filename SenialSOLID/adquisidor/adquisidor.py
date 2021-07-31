@@ -1,7 +1,7 @@
 """
 Modulo que define la clase Adquisidor
 """
-from SenialSOLID.senial_solid.senial import Senial
+from SenialSOLID.modelo.senial import Senial
 
 
 class Adquisidor:
@@ -12,10 +12,12 @@ class Adquisidor:
     --> obtener_senial_adquirida()
     --> leer_senial()
     """
-    def __init__(self, valor):
-        """ Constructor """
+    def __init__(self, numero_de_nuestras):
+        """ Constructor
+        numero de muestras: tinicializa el tamaño de la señal a adquirir
+        """
         self._senial = Senial()
-        self._nro_muestra = valor
+        self._nro_muestra = numero_de_nuestras
 
     @staticmethod
     def _leer_dato_entrada():

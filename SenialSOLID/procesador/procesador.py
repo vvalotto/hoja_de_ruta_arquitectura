@@ -1,12 +1,12 @@
 """
-Define la clase procesador de la senail
+Define la clase procesador de la senial
 """
-from SenialSOLID.senial_solid.senial import Senial
+from SenialSOLID.modelo.senial import *
 
 
 class Procesador:
     """
-    Constructor: Inicializa la senial que resultara procesada.
+    Constructor: Inicializa la clase
     """
     def __init__(self):
         self._senial_procesada = Senial()
