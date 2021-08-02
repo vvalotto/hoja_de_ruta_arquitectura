@@ -1,37 +1,36 @@
-"""
-Define la clase procesador de la senial
-Cambio 1:
-Uso de la funcion map para calcular valores de la lista
-"""
-from SenialSOLID.modelo.senial import *
+from SenialSOLID.modelo.senial import Senial
 
 
 class Procesador:
     """
-    Constructor: Inicializa la clase
+    Define la clase procesador de la senial
     """
-    def __init__(self):
+
+    def __init__(self, parametro):
+        """
+        Constructor: Inicializa la senial que resultara procesada.
+        """
         self._senial_procesada = Senial()
+        self._parametro = parametro
     
-    def procesar_senial(self, senial, tipo_procesamiento, parametro):
+    def procesar_senial(self, senial):
         """
         Metodo que realiza el procesamiento de la senial
         :param senial: a procesar
-        :param tipo_procesamiento: define que tipo de calculo hay que haces
-        :param parametro: parametro relacionado con tipo de procesamiento
         :return:
         """
         print("Procesando...")
-        if tipo_procesamiento == "amplificar":
-            self._amplificacion = parametro
-            self._senial_procesada._valores = list(map(self.funcion_doble, senial._valores))
-        elif tipo_procesamiento == "umbral":
-            self._umbral = parametro
-            self._senial_procesada._valores = list(map(self.funcion_umbral, senial._valores))
-        else:
-            return Exception()
-        return
-    
+        self._senial_procesada._valores = list(map(self.funcion_doble, senial._valores))
+
+    def procesar_senial_con_umbral(self, senial):
+        """
+        Metodo que realiza el procesamiento de la senial con umbral
+        :param senial: a procesar
+        :return:
+        """
+        print("Procesando con umbral")
+        self._senial_procesada._valores = list(map(self.funcion_umbral, senial._valores))
+
     def obtener_senial_procesada(self):
         """
         Devuelve la senial procesada
@@ -45,7 +44,7 @@ class Procesador:
         :param valor:
         :return:
         """
-        return valor * self._amplificacion
+        return valor * self._parametro
 
     def funcion_umbral(self, valor):
         """
@@ -53,4 +52,4 @@ class Procesador:
         :param valor:
         :return:
         """
-        return valor if valor < self._umbral else 0
+        return valor if valor < self._parametro else 0
