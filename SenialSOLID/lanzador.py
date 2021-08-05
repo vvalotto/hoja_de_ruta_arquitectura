@@ -11,7 +11,6 @@ import modelo
 
 from configurador import *
 
-from adquisidor.adquisidor import *
 from visualizador.visualizador import *
 
 
@@ -56,7 +55,7 @@ class Lanzador:
         '''
         Se instancian las clases que participan del procesamiento
         '''
-        mi_adquisidor = Adquisidor(5)
+        mi_adquisidor = Configurador.adquisidor
         mi_procesador = Configurador.procesador
 
         os.system("clear")
