@@ -3,6 +3,7 @@ Configura la clase que se usara
 """
 from adquisidor.adquisidor import *
 from procesador.procesador import *
+from visualizador.visualizador import *
 
 
 def definir_adquisidor():
@@ -12,7 +13,7 @@ def definir_adquisidor():
     Adquisidor por Archivo
     :return:
     """
-    return AdquisidorArchivo("datos.txt")
+    return AdquisidorConsola(5)
 
 
 def definir_procesador():
@@ -25,6 +26,10 @@ def definir_procesador():
     return ProcesadorAmplificador(4)
 
 
+def definir_visualizador():
+    return Visualizador()
+
+
 class Configurador(object):
     """
     El Configurador es un contenedor de objetos que participan de la solucion
@@ -33,6 +38,8 @@ class Configurador(object):
     adquisidor = definir_adquisidor()
     # Se configura el tipo de procesador
     procesador = definir_procesador()
+    # Se configura el visualizador
+    visualizador = definir_visualizador()
 
     def __init__(self):
         pass

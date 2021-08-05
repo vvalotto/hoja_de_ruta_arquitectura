@@ -11,8 +11,6 @@ import modelo
 
 from configurador import *
 
-from visualizador.visualizador import *
-
 
 class Lanzador:
     """
