@@ -48,7 +48,8 @@ class ProcesadorAmplificador(BaseProcesador):
         Implementa el procesamiento de amplificar cada valor de senial
         """
         print("Procesando...")
-        self._senial_procesada._valores = list(map(self._amplificar, senial._valores))
+        self._senial_procesada.valores = list(map(self._amplificar, senial.valores))
+        self._senial_procesada.tamanio = senial.tamanio
 
     def _amplificar(self, valor):
         """

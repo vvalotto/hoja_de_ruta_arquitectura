@@ -72,7 +72,7 @@ class Lanzador:
         '''Paso 3 - Se muestran las seniales '''
         print("Incio - Paso 3 - Mostrar Senial")
         Visualizador().mostrar_datos(senial_procesada)
-        print("Fin Programa - OCP")
+        print("Fin Programa - NoLSP")
 
 
 if __name__ == "__main__":

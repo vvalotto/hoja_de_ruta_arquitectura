@@ -7,7 +7,7 @@ class Visualizador:
 
     @staticmethod
     def mostrar_datos(senial):
-        print('Mostrar la senial')
-        for i in range(0, senial.obtener_tamanio()):
+        print('Mostrar la senial' + str(senial.tamanio))
+        for i in range(0, senial.tamanio):
             print(senial.obtener_valor(i))
 
