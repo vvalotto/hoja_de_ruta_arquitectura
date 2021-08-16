@@ -65,8 +65,24 @@ class Senial(object):
         Agrega dato a la lista de la senial
         :param valor: dato de la senial obtenida
         """
-        self._valores.append(valor)
-        self._cantidad += 1
+        try:
+            if self._tamanio != self._cantidad:
+                if isinstance(self, SenialPila):
+                    self._valores.append(valor)
+                elif isinstance(self, SenialCola):
+                    self._valores[self._cola] = valor
+                    if self._cola == (self._tamanio - 1):
+                        self._cola = 0
+                    else:
+                        self._cola += 1
+                elif isinstance(self, Senial):
+                    self._valores.append(valor)
+                self._cantidad += 1
+            else:
+                raise Exception('No se pueden poner mas datos')
+        except Exception as e:
+            print("Error: ", e)
+
         return
     
     def obtener_valor(self, indice):
