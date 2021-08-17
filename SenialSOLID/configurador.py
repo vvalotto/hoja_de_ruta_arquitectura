@@ -1,3 +1,6 @@
+__author__ = 'Victor Valotto'
+__version__ = '1.0.0'
+
 """
 Configura las clases que se usaran en el programa
 Se comporta como un Factory de las clases
@@ -6,7 +9,6 @@ from procesador.procesador import *
 from adquisidor.adquisidor import *
 from visualizador.visualizador import *
 from modelo.senial import *
-import os
 
 
 def definir_senial_adquirir():
@@ -14,7 +16,7 @@ def definir_senial_adquirir():
     Define el tipo de estructura para la señal a adquirir
     :return:
     """
-    return SenialCola(5)
+    return SenialLista(5)
 
 
 def definir_senial_procesar():
@@ -22,7 +24,7 @@ def definir_senial_procesar():
     Define el tipo de estructura para la señal a procesar
     :return:
     """
-    return SenialPila(5)
+    return SenialLista(5)
 
 
 def definir_adquisidor():

@@ -1,13 +1,14 @@
-#!/usr/local/bin/python3.4
+__author__ = 'Victor Valotto'
+__version__ = '5.0.0'
+
 """
-Ejemplo de solucion para el SRP, donde las responsabilidades se dividen
-entre diferentes clases separadas en diferentes módulos a implementar.
+
 """
-import os
 import adquisidor
 import procesador
 import visualizador
 import modelo
+import os
 
 from configurador import *
 
@@ -37,6 +38,7 @@ class Lanzador:
         print("procesador: " + procesador.__version__)
         print("visualizador: " + visualizador.__version__)
         print("modelo: " + modelo.__version__)
+        print("Senial_SOLID:" + __version__)
 
     @staticmethod
     def ejecutar():
@@ -72,7 +74,7 @@ class Lanzador:
         '''Paso 3 - Se muestran las seniales '''
         print("Incio - Paso 3 - Mostrar Senial")
         Visualizador().mostrar_datos(senial_procesada)
-        print("Fin Programa - NoLSP")
+        print("Fin Programa - LSP")
 
 
 if __name__ == "__main__":
