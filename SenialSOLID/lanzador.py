@@ -1,14 +1,15 @@
+
 __author__ = 'Victor Valotto'
-__version__ = '5.0.0'
+__version__ = '6.0.0'
 
 """
-
+LSP - Implementado
 """
+import os
 import adquisidor
 import procesador
 import visualizador
 import modelo
-import os
 
 from configurador import *
 

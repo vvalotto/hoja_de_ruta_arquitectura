@@ -7,16 +7,12 @@ estructuras de las seniales y resuelve la violacion de los principio OCP y LSP
 """
 
 from abc import abstractmethod
+from collections import deque
 
 
 class SenialBase(object):
     """
-    Definicion de la entidad tipo Senial.
-    En este caso es una definicion de una clase concreta.
-    Tiene las funciones:
-    -> poner_valor(valor)
-    -> obtener_valor(indice)
-    -> obtener_tamanio()
+    Definicion de la clase abstracta Senial
     """
 
     # Propiedades
@@ -93,8 +89,8 @@ class SenialBase(object):
 
     def __str__(self):
         cad = ""
-        cad += "tamanio: " + str(self._tamanio) + "\n"
-        cad += "fecha_adquisicion: " + str(self._fecha_adquisicion)
+        cad += 'Tipo: ' + str(type(self)) + '\r\n'
+        cad += 'fecha_adquisicion: ' + str(self._fecha_adquisicion)
         return cad
 
 
@@ -123,7 +119,7 @@ class SenialLista(SenialBase):
     def sacar_valor(self):
         """
         Por se una lista se trata como un arreglo. No se saca literalmente el dato sino
-        que se obtiene desde el indice inicial hasta el último
+        que se obtiene desde el indici inicial hasta el último
         :return:
         """
         valor = 0
@@ -138,13 +134,66 @@ class SenialLista(SenialBase):
 
 class SenialPila(SenialBase):
     """
-    Clase no implementada
+    Implementa una Senial con una estructura Tipo Pila
     """
-    pass
+
+    def poner_valor(self, valor):
+        """
+        Agrega dato a la lista de la senial
+        :param valor: dato de la senial obtenida
+        """
+        if self._cantidad < self._tamanio:
+            self._valores.append(valor)
+            self._cantidad += 1
+        else:
+            raise Exception('No se pueden poner mas datos')
+        return
+
+    def sacar_valor(self):
+        """
+        Retira un elemento de la lista ubicado en indice
+        :return: dato extraido
+        """
+        valor = None
+        try:
+            valor = self._valores.pop()
+            self._cantidad -= 1
+            return valor
+        except Exception('No hay nada para sacar'):
+            print(Exception)
+        return valor
 
 
 class SenialCola(SenialBase):
     """
-    Clase no implementada
+    Implementa una Senial con una estructura Tipo Cola
     """
-    pass
+
+    def __init__(self, tamanio):
+        super().__init__(tamanio)
+        self._valores = deque([])
+
+    def poner_valor(self, valor):
+        """
+        Agrega dato a la lista de la senial
+        :param valor: dato de la senial obtenida
+        """
+        if self._cantidad < self._tamanio:
+            self._valores.append(valor)
+            self._cantidad += 1
+        else:
+            raise Exception('No se pueden poner mas datos')
+        return
+
+    def sacar_valor(self):
+        """
+        Retira un elemento de la lista ubicado en indice
+        :return: dato extraido
+        """
+        valor = 0
+        try:
+            valor = self._valores.popleft()
+            self._cantidad -= 1
+        except Exception('No hay nada para sacar'):
+            print(Exception)
+        return valor
