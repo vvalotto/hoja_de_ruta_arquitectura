@@ -17,6 +17,22 @@ class SenialBase(object):
 
     # Propiedades
     @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, valor):
+        self._id = valor
+
+    @property
+    def comentario(self):
+        return self._comentario
+
+    @comentario.setter
+    def comentario(self, valor):
+        self._comentario = valor
+
+    @property
     def fecha_adquisicion(self):
         return self._fecha_adquisicion
 
@@ -53,6 +69,8 @@ class SenialBase(object):
         Constructor: Inicializa la lista de valores vacia
         :return:
         """
+        self._id = ''
+        self._comentario = ''
         self._valores = []
         self._fecha_adquisicion = None
         self._cantidad = 0
@@ -90,6 +108,8 @@ class SenialBase(object):
     def __str__(self):
         cad = ""
         cad += 'Tipo: ' + str(type(self)) + '\r\n'
+        cad += 'Id: ' + self._id + '\r\n'
+        cad += 'Descripcion: ' + str(self._comentario) + '\r\n'
         cad += 'fecha_adquisicion: ' + str(self._fecha_adquisicion)
         return cad
 

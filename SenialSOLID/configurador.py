@@ -1,5 +1,5 @@
 __author__ = 'Victor Valotto'
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 
 """
 Configura las clases que se usaran en el programa
@@ -8,6 +8,7 @@ Se comporta como un Factory de las clases
 from procesador.procesador import *
 from adquisidor.adquisidor import *
 from visualizador.visualizador import *
+from persistidor.persistidor import *
 from modelo.senial import *
 
 
@@ -44,11 +45,15 @@ def definir_procesador():
     Procesador con Umbral
     :return:
     """
-    return ProcesadorConUmbral(definir_senial_procesar(), 30)
+    return ProcesadorAmplificador(definir_senial_procesar(), 4)
 
 
 def definir_visualizador():
     return Visualizador()
+
+
+def definir_persistidor(recurso):
+    return PersistidorPickle(recurso)
 
 
 class Configurador(object):
@@ -61,5 +66,8 @@ class Configurador(object):
     procesador = definir_procesador()
     # Se configura el visualizador
     visualizador = definir_visualizador()
-
+    # Se configura la persitencia para los datos adquiridos
+    persistidor_adquisicion = definir_persistidor('./tmp/datos/adq')
+    # Se configura la persitencia para los datos procesados
+    persistidor_procesamiento = definir_persistidor('./tmp/datos/pro')
 

@@ -24,3 +24,7 @@ Requerimiento 3:
 Los valores que corresponden a la señal son manejados como una lista, los desarrolladores están viendo para
 agregar el manejo de la colección de valores de la señal también como una pila y una cola, además
 de una lista.
+
+Requerimiento 4:
+
+Las datos adquiridos y procesados deben ser guardados.
