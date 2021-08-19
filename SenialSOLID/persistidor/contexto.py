@@ -1,13 +1,12 @@
 """
-Modulo que contiene la responsabilidad de guardar las seniales, adquiridas y procesadas
-en algun tipo de almacen de persistencia (archivo plano, xml, serializa, base de dato)
+El contexto define como se implementa la persistencia.Que tipo de almancen
 """
 import os
 import pickle
 from .mapeador import *
 
 
-class Persistidor(metaclass=ABCMeta):
+class BaseContexto(metaclass=ABCMeta):
     """
     Clase abstract que define la interfaz de la persistencia de datos
     """
@@ -41,20 +40,19 @@ class Persistidor(metaclass=ABCMeta):
         pass
 
 
-class PersistidorPickle(Persistidor):
+class ContextoPickle(BaseContexto):
     """
     Clase de persistidor que persiste un tipo de objeto de manera serializada
     """
     def __init__(self, recurso):
         """
-        Se crea el archivo con el path donde se guardaran los archivos
+        Se crea el archivo con el path donde se guardarán los archivos
         de la entidades a persistir
         :param recurso: Path del repositorio de entidades
         :return:
         """
         try:
             super().__init__(recurso)
-            self._recurso = recurso
             if not os.path.isdir(recurso):
                 os.mkdir(recurso)
         except IOError as eIO:
@@ -73,6 +71,7 @@ class PersistidorPickle(Persistidor):
                 pickle.dump(entidad, a)
         except IOError as eIO:
             raise eIO
+        return
 
     def recuperar(self, entidad, id_entidad):
         """
@@ -94,13 +93,13 @@ class PersistidorPickle(Persistidor):
         return e
 
 
-class PersistidorArchivo(Persistidor):
+class ContextoArchivo(BaseContexto):
     """
     Contexto del recurso de persistencia de tipo archivo
     """
     def __init__(self, recurso):
         """
-        Se crea el archivo con el path donde se guardaran los archivos
+        Se crea el archivo con el path donde se guardarán los archivos
         de la entidades a persistir
         :param recurso: Path del repositorio de entidades
         :return:
@@ -129,6 +128,7 @@ class PersistidorArchivo(Persistidor):
                 a.write(contenido)
         except IOError as eIO:
             raise eIO
+        return
 
     def recuperar(self, entidad, id_entidad):
         """

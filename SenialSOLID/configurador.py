@@ -1,5 +1,5 @@
 __author__ = 'Victor Valotto'
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
 """
 Configura las clases que se usaran en el programa
@@ -8,7 +8,9 @@ Se comporta como un Factory de las clases
 from procesador.procesador import *
 from adquisidor.adquisidor import *
 from visualizador.visualizador import *
-from persistidor.persistidor import *
+from persistidor.contexto import *
+from persistidor.repositorio import *
+
 from modelo.senial import *
 
 
@@ -52,21 +54,37 @@ def definir_visualizador():
     return Visualizador()
 
 
-def definir_persistidor(recurso):
-    return PersistidorArchivo(recurso)
+def definir_contexto(recurso):
+    """
+    Los contexto son:
+    Almancenar en archivos txt
+    Almacenar en archivos pickle
+    :param recurso:
+    :return:
+    """
+    return ContextoArchivo(recurso)
+
+
+def definir_repositorio(contexto):
+    return RepositorioSenial(contexto)
 
 
 class Configurador(object):
     """
     El Configurador es un contenedor de objetos que participan de la solucion
     """
+
+    # Configura los contextos de datos
+    ctx_datos_adquisicion = definir_contexto('./tmp/datos/adq')
+    ctx_datos_procesamiento = definir_contexto('./tmp/datos/pro')
+    # Configura los repositorios de las entidades a usar
+    rep_adquisicion = definir_repositorio(ctx_datos_adquisicion)
+    rep_procesamiento = definir_repositorio(ctx_datos_procesamiento)
+
     # Se configura el tipo de adquisidor
     adquisidor = definir_adquisidor()
     # Se configura el tipo de procesador
     procesador = definir_procesador()
     # Se configura el visualizador
     visualizador = definir_visualizador()
-    # Se configura la persitencia para los datos adquiridos
-    persistidor_adquisicion = definir_persistidor('./tmp/datos/adq')
-    # Se configura la persitencia para los datos procesados
-    persistidor_procesamiento = definir_persistidor('./tmp/datos/pro')
+

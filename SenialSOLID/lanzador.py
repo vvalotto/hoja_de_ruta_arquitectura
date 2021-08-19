@@ -1,9 +1,11 @@
+#!/usr/local/bin/python3.4
 __author__ = 'Victor Valotto'
 __version__ = '7.0.0'
 
 """
 Persistencia
 """
+
 import adquisidor
 import procesador
 import visualizador
@@ -61,8 +63,8 @@ class Lanzador:
         mi_adquisidor = Configurador.adquisidor
         mi_procesador = Configurador.procesador
         mi_visualizador = Configurador.visualizador
-        persistidor_adquisicion = Configurador.persistidor_adquisicion
-        persistidor_procesamiento = Configurador.persistidor_procesamiento
+        repositorio_adquisicion = Configurador.rep_adquisicion
+        repositorio_procesamiento = Configurador.rep_procesamiento
 
         os.system("clear")
         print("Incio - Paso 1 - Adquisicion de la senial")
@@ -77,7 +79,7 @@ class Lanzador:
 
         Lanzador.tecla()
         print('Se persiste la señal adquirida')
-        persistidor_adquisicion.persistir(senial_adquirida, senial_adquirida.id)
+        repositorio_adquisicion.guardar(senial_adquirida)
         print('Señal Guardada')
 
         '''Paso 2 - Se procesa la senial adquirida'''
@@ -89,13 +91,13 @@ class Lanzador:
         print('Se persiste la señal procesada')
         senial_procesada.comentario = input('Descripcion de la señal procesada:')
         senial_procesada.id = int(input('Identificacion (nro entero)'))
-        persistidor_procesamiento.persistir(senial_procesada, senial_procesada.id)
+        repositorio_procesamiento.guardar(senial_procesada)
         print('Señal Guardada')
 
         '''Paso 3 - Se muestran las seniales '''
         print("Incio - Paso 3 - Mostrar Senial")
-        adquirida = persistidor_adquisicion.recuperar(definir_senial_adquirir(), senial_adquirida.id)
-        procesada = persistidor_procesamiento.recuperar(definir_senial_procesar(), senial_procesada.id)
+        adquirida = repositorio_adquisicion.obtener(definir_senial_adquirir(), senial_adquirida.id)
+        procesada = repositorio_procesamiento.obtener(definir_senial_procesar(), senial_procesada.id)
         mi_visualizador.mostrar_datos(adquirida)
         print('----->')
         mi_visualizador.mostrar_datos(procesada)
