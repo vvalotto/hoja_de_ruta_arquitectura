@@ -27,4 +27,5 @@ de una lista.
 
 Requerimiento 4:
 
-Las datos adquiridos y procesados deben ser guardados.
+Las datos adquiridos y procesados deben ser guardados. Registrar las posibles excepciones y registrar la
+trazabilidad de los accesos al guardar o recuperar los datos de las señales.

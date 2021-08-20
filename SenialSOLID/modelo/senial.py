@@ -75,7 +75,6 @@ class SenialBase(object):
         self._fecha_adquisicion = None
         self._cantidad = 0
         self._tamanio = tamanio
-        return
 
     @abstractmethod
     def poner_valor(self, valor):
@@ -108,7 +107,7 @@ class SenialBase(object):
     def __str__(self):
         cad = ""
         cad += 'Tipo: ' + str(type(self)) + '\r\n'
-        cad += 'Id: ' + self._id + '\r\n'
+        cad += 'Id: ' + str(self._id) + '\r\n'
         cad += 'Descripcion: ' + str(self._comentario) + '\r\n'
         cad += 'fecha_adquisicion: ' + str(self._fecha_adquisicion)
         return cad
@@ -122,7 +121,6 @@ class SenialLista(SenialBase):
     def __init__(self, tamanio=10):
         super().__init__(tamanio)
         self._indice = 0
-        return
 
     def poner_valor(self, valor):
         """
@@ -134,7 +132,6 @@ class SenialLista(SenialBase):
             self._cantidad += 1
         else:
             raise Exception('No se pueden poner mas datos')
-        return
 
     def sacar_valor(self):
         """
@@ -167,7 +164,6 @@ class SenialPila(SenialBase):
             self._cantidad += 1
         else:
             raise Exception('No se pueden poner mas datos')
-        return
 
     def sacar_valor(self):
         """
@@ -203,7 +199,6 @@ class SenialCola(SenialBase):
             self._cantidad += 1
         else:
             raise Exception('No se pueden poner mas datos')
-        return
 
     def sacar_valor(self):
         """
