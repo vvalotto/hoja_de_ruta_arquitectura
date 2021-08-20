@@ -39,3 +39,22 @@ class RepositorioSenial(BaseRepositorio):
             return self._contexto.recuperar(senial, id_senial)
         except Exception:
             raise Exception
+
+
+class RepositorioUsuario(BaseRepositorio):
+
+    def __init__(self, ctx):
+        super()._init__(ctx)
+
+    def guardar(self, usuario):
+        try:
+            self._contexto.persistir(usuario, usuario.id)
+        except Exception:
+            raise Exception
+        return
+
+    def obtener(self, usuario, id_usuario):
+        try:
+            return self._contexto.recuperar(usuario, id_usuario)
+        except Exception:
+            raise Exception
