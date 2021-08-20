@@ -1,14 +1,15 @@
+
 __author__ = 'Victor Valotto'
-__version__ = '7.0.0'
+__version__ = '8.0.0'
 
 """
-NoISP 
+ISP 
 """
-
 import adquisidor
 import procesador
 import visualizador
 import persistidor
+import utilidades
 import modelo
 
 from configurador import *
@@ -41,6 +42,7 @@ class Lanzador:
         print("procesador: " + procesador.__version__)
         print("visualizador: " + visualizador.__version__)
         print("persistidor: " + persistidor.__version__)
+        print("utilidades: " + utilidades.__version__)
         print("modelo: " + modelo.__version__)
         print("Senial_SOLID:" + __version__)
 
@@ -87,15 +89,15 @@ class Lanzador:
         print("Incio - Paso 2 - Procesamiento")
         mi_procesador.procesar(senial_adquirida)
         senial_procesada = mi_procesador.obtener_senial_procesada()
+        repositorio_procesamiento.auditar(senial_procesada, "Senial Procesada")
+        Lanzador.tecla()
         senial_procesada.comentario = input('Descripcion de la señal procesada:')
         senial_procesada.id = int(input('Identificacion (nro entero)'))
 
-        repositorio_procesamiento.auditar(senial_procesada, "Senial Procesada")
-        Lanzador.tecla()
         print('Se persiste la señal procesada')
         repositorio_procesamiento.guardar(senial_procesada)
         print('Señal Guardada')
-        repositorio_procesamiento.auditar(senial_procesada, "Senial Guardada")
+        repositorio_procesamiento.auditar(senial_adquirida, "Senial Guardada")
 
         '''Paso 3 - Se muestran las seniales '''
         print("Incio - Paso 3 - Mostrar Senial")
@@ -106,7 +108,7 @@ class Lanzador:
         mi_visualizador.mostrar_datos(procesada)
         print('----->')
 
-        print("Fin Programa - NoISP")
+        print("Fin Programa")
         exit()
 
 
