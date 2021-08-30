@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<configuracion>
+    <dir_recurso_datos>./tmp/datos</dir_recurso_datos>
+    <adquisidor>senoidal
+        <param id="dir_entrada_datos"> </param>
+    </adquisidor>
+    <procesador>umbral
+        <param id="umbral">5</param>
+    </procesador>
+    <senial_adq>cola
+        <tamanio>20</tamanio>
+    </senial_adq>
+    <senial_pro>pila
+        <tamanio>20</tamanio>
+    </senial_pro>
+    <contexto>pickle</contexto>
+</configuracion>

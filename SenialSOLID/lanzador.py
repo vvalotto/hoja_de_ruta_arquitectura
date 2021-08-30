@@ -1,10 +1,10 @@
-
 __author__ = 'Victor Valotto'
-__version__ = '8.0.0'
+__version__ = '9.0.0'
 
 """
-ISP 
+LSP - Implementado
 """
+import os
 import adquisidor
 import procesador
 import visualizador
@@ -21,8 +21,6 @@ class Lanzador:
     """
     Programa Lanzador
     """
-    def __init__(self):
-        pass
 
     @staticmethod
     def tecla():
@@ -32,7 +30,6 @@ class Lanzador:
         while True:
             if input('C para continuar> ') == "C":
                 break
-        return
 
     @staticmethod
     def informar_versiones():
@@ -91,24 +88,23 @@ class Lanzador:
         senial_procesada = mi_procesador.obtener_senial_procesada()
         repositorio_procesamiento.auditar(senial_procesada, "Senial Procesada")
         Lanzador.tecla()
+        print('Se persiste la señal procesada')
         senial_procesada.comentario = input('Descripcion de la señal procesada:')
         senial_procesada.id = int(input('Identificacion (nro entero)'))
-
-        print('Se persiste la señal procesada')
         repositorio_procesamiento.guardar(senial_procesada)
         print('Señal Guardada')
         repositorio_procesamiento.auditar(senial_adquirida, "Senial Guardada")
 
         '''Paso 3 - Se muestran las seniales '''
         print("Incio - Paso 3 - Mostrar Senial")
-        adquirida = repositorio_adquisicion.obtener(definir_senial_adquirir(), senial_adquirida.id)
-        procesada = repositorio_procesamiento.obtener(definir_senial_procesar(), senial_procesada.id)
+        adquirida = repositorio_adquisicion.obtener(senial_adquirida, senial_adquirida.id)
+        procesada = repositorio_procesamiento.obtener(senial_procesada, senial_procesada.id)
         mi_visualizador.mostrar_datos(adquirida)
         print('----->')
         mi_visualizador.mostrar_datos(procesada)
         print('----->')
 
-        print("Fin Programa")
+        print("Fin Programa - DIP")
         exit()
 
 
