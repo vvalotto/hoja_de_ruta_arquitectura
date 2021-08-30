@@ -37,7 +37,7 @@ def definir_adquisidor():
     Adquisidor por Archivo
     :return:
     """
-    return AdquisidorArchivo("adquisidor/datos.txt", definir_senial_adquirir())
+    return AdquisidorSenoidal(definir_senial_adquirir())
 
 
 def definir_procesador():

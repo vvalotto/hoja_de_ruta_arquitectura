@@ -1,7 +1,7 @@
 __author__ = 'voval'
 __project__ = ''
 
-from SenialSOLID.modelo.usuario import *
+from .usuario import *
 from SenialSOLID.persistidor.contexto import *
 from SenialSOLID.persistidor.repositorio import *
 
@@ -15,18 +15,15 @@ def crear_usuario():
     usu.usuario = 'vvalotto'
     usu.clave = 'voval062'
     usu.nombre_apellido = str(nom)
-
     return usu
 
 
 if __name__ == '__main__':
     contexto = ContextoArchivo('.')
     repo = RepositorioUsuario(contexto)
-
     usu = crear_usuario()
     repo.guardar(usu)
     print(usu.usuario)
-
     usu1 = repo.obtener(Usuario(), usu.id)
     print(usu1)
     print(usu1.usuario)

@@ -71,7 +71,6 @@ class ContextoPickle(BaseContexto):
                 pickle.dump(entidad, a)
         except IOError as eIO:
             raise eIO
-        return
 
     def recuperar(self, entidad, id_entidad):
         """
@@ -128,7 +127,6 @@ class ContextoArchivo(BaseContexto):
                 a.write(contenido)
         except IOError as eIO:
             raise eIO
-        return
 
     def recuperar(self, entidad, id_entidad):
         """
