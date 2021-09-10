@@ -8,7 +8,8 @@ class FactoryProcesador(object):
         try:
             procesador = None
             if tipo_procesador == 'amplificador':
-                procesador = ProcesadorAmplificador(senial)
+                amplificacion = int(param[0])
+                procesador = ProcesadorAmplificador(senial, amplificacion)
 
             elif tipo_procesador == 'umbral':
                 umbral = int(param[0])
